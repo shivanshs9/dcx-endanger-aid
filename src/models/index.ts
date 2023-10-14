@@ -1,0 +1,1 @@
+export { SanctuaryModel as Sanctuary } from "./sanctuary";
