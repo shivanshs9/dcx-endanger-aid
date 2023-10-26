@@ -1,46 +1,39 @@
-# animals
+# dcx-endanger-aid
 
-This template should help get you started developing with Vue 3 in Vite.
+For this Project We have created 5 contarcts
 
-## Recommended IDE Setup
+1. Wild.sol
+2. DonationNFT.sol
+3. GuardianshipNFT.sol
+4. SanctuaryManager.sol
+5. Controller.sol
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+# Wild.sol
 
-## Type Support for `.vue` Imports in TS
+In this smart contract we have created an ERC20 token.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+# DonationNFT.sol
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+In This Smart Contract we have created NFT which will be assigned to users when they will donate to a sanctuary
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+# GuardianshipNFT.sol
 
-## Customize configuration
+In This Smart Contract we have created NFT which will be assigned to users when they will adopt an animal from a sanctuary. This NFT has a validity period After Which this can not be used and will be removed from users account.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+# SanctuaryManager.sol
 
-## Project Setup
+This SmartContract Manages all the users, sanctuaries, animals. This is basically used to create animal, sanctuaries. Only owner is allowed to create these sanctuaries. It also have some getters to provide data for frontend according to use cases.
 
-```sh
-npm install
-```
+# Controller.sol
 
-### Compile and Hot-Reload for Development
+This SmartContart is our main smart contract that interacts with the users and allows them to donate for a sanctuary or adopt an animal.
 
-```sh
-npm run dev
-```
+In this Smart Contract We have several functions to support user to donate and adopt animals.
 
-### Type-Check, Compile and Minify for Production
+1. adoptAnimal: Basically this function takes animalId and total months he wants to adopt it for. Then we calculate the cost in ERC20 tokens. For each month user needs to pay 10 tokens. After successfull adoption we also mint guardianshpNFT to the users account with a time period of months for which he has adopted the animal.
 
-```sh
-npm run build
-```
+2. donateToSanctuary: This allows users to donate to a sanctuary and also mints donationNFT to users account.
 
-### Lint with [ESLint](https://eslint.org/)
+3. burnExpiredTokens: This allows Owner to burn the tokens for which expiry date has been passed.
 
-```sh
-npm run lint
-```
+This is a derived contract of SanctuaryManager so it also support all the functions that Sanctuary Manager Supports.
