@@ -7,12 +7,12 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./SanctuaryManager.sol";
 
 contract Controller is Ownable, SanctuaryManager {
-  IERC20 public wild;
+  IERC20 public ama;
   IERC721 public donationNFT;
   IERC721 public gaurdianshipNFT;
 
-  constructor(address _wild, address _donationNFT, address _gaurdianshipNFT) {
-    wild = IERC20(_wild);
+  constructor(address _ama, address _donationNFT, address _gaurdianshipNFT) {
+    ama = IERC20(_ama);
     donationNFT = IERC721(_donationNFT);
     gaurdianshipNFT = IERC721(_gaurdianshipNFT);
     sanctuaries.push(Sanctuary("Dummy_sanctuary", "dummy", 0, new uint[](0)));
@@ -29,7 +29,7 @@ contract Controller is Ownable, SanctuaryManager {
     uint _sanctuaryId,
     uint _amount
   ) public returns (uint) {
-    wild.transferFrom(msg.sender, address(this), _amount);
+    ama.transferFrom(msg.sender, address(this), _amount);
     uint tokenId = donationNFT.safeMint(msg.sender);
     sanctuaries[_sanctuaryId].donations += _amount;
     users[msg.sender].totalDonations += _amount;
@@ -45,9 +45,9 @@ contract Controller is Ownable, SanctuaryManager {
     );
     require(animals[_animalId].sanctuaryId != 0, "Animal does not exist");
     require(months > 0, "Months must be greater than 0");
-    uint cost = months * 10 * (10 ** wild.decimals());
-    require(wild.balanceOf(msg.sender) >= cost, "Insufficient WILD balance");
-    wild.transferFrom(msg.sender, address(this), cost);
+    uint cost = months * 10 * (10 ** ama.decimals());
+    require(ama.balanceOf(msg.sender) >= cost, "Insufficient ama balance");
+    ama.transferFrom(msg.sender, address(this), cost);
     uint tokenId = gaurdianshipNFT.safeMint(msg.sender);
     animals[_animalId].gaurdian = msg.sender;
     animals[_animalId].gardianshipExpiry = block.timestamp + months * 30 days;

@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract GaurdianshipNFT is ERC721, ERC721Burnable, Ownable {
+contract GuardLifeNFT is ERC721, ERC721Burnable, Ownable {
   using Counters for Counters.Counter;
 
   Counters.Counter private _tokenIdCounter;
@@ -14,7 +14,7 @@ contract GaurdianshipNFT is ERC721, ERC721Burnable, Ownable {
 
   string public baseURI;
 
-  constructor() ERC721("GaurdianshipNFT", "GAURD") {}
+  constructor() ERC721("GuardLife", "GUARD") {}
 
   function safeMint(address to) public onlyOwner returns (uint256) {
     uint256 tokenId = _tokenIdCounter.current();
