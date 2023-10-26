@@ -34,7 +34,11 @@ export class Sanctuary implements Addressable, IModel {
     return Promise.resolve(this._walletAddress as string);
   }
 
-  listAnimals = () => new AnimalStore().fetchAnimalsForSanctuary(this._id);
+  listAnimals = async () => {
+    const store = new AnimalStore()
+    await store.init()
+    return await store.fetchAnimalsForSanctuary(this._id);
+  }
 
   howManyAnimals = async () => (await this.listAnimals()).length;
 
