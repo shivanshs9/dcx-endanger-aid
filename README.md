@@ -2,21 +2,21 @@
 
 For this Project We have created 5 contarcts
 
-1. Wild.sol
-2. DonationNFT.sol
-3. GuardianshipNFT.sol
+1. Token_AMA.sol
+2. SafeSpeciesCardNFT.sol
+3. GuardLifeNFT.sol
 4. SanctuaryManager.sol
 5. Controller.sol
 
-# Wild.sol
+# Token_AMA.sol
 
 In this smart contract we have created an ERC20 token.
 
-# DonationNFT.sol
+# SafeSpeciesCardNFT.sol
 
 In This Smart Contract we have created NFT which will be assigned to users when they will donate to a sanctuary
 
-# GuardianshipNFT.sol
+# GuardLifeNFT.sol
 
 In This Smart Contract we have created NFT which will be assigned to users when they will adopt an animal from a sanctuary. This NFT has a validity period After Which this can not be used and will be removed from users account.
 
